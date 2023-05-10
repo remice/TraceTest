@@ -401,7 +401,7 @@ void ATester::ExCapsuleOverlap()
 	{
 		FVector TraceLocation = GetActorLocation() + FVector(0, 0, 1) * Index;
 		IsCollide = UKismetSystemLibrary::CapsuleOverlapComponents(GetWorld(), TraceLocation + (FVector(0, 1, 0) * Manager->GetSweepDistance()),
-			Manager->GetSphereRadius(), Manager->GetSweepDistance(),
+			Manager->GetSphereRadius(), Manager->GetWeaponLength(),
 			Manager->GetObjectTypeArray(), NULL, Manager->GetIgnoreActorArray(), HitResult);
 
 		if (IsCollide == false && bDebugDraw == false)
