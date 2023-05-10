@@ -15,8 +15,10 @@ enum class TestMethod : uint8
 	SphereTraceMulti,
 	BoxTrace,
 	BoxTraceMulti,
-	SweepTrace,
-	SweepTraceMulti
+	SphereOverlap,
+	SphereOverlapComp,
+	BoxOverlap,
+	CapsuleOverlap
 };
 
 DECLARE_MULTICAST_DELEGATE(FOnStartTesterSignature)
@@ -42,7 +44,7 @@ public:
 public:
 	FORCEINLINE TArray<TEnumAsByte<EObjectTypeQuery>> GetObjectTypeArray() const { return ObjectTypesArray; }
 	FORCEINLINE TArray<TObjectPtr<AActor>> GetIgnoreActorArray() const { return IgnoreActorArray; }
-	FORCEINLINE const float& GetSweepDistance() { return SweepDistance; }
+	FORCEINLINE const float& GetSweepDistance() { return OverlapDistance; }
 	FORCEINLINE const float& GetWeaponLength() { return WeaponLength; }
 	FORCEINLINE const float& GetAttackSpeed() { return AttackSpeed; }
 	FORCEINLINE const TestMethod& GetFirstMethod() { return FirstMethod; }
@@ -51,11 +53,11 @@ public:
 	FORCEINLINE const float& GetSphereRadius() { return SphereRadius; }
 	FORCEINLINE const FVector& GetBoxHalfSize() { return BoxHalfSize; }
 	FORCEINLINE const FRotator& GetBoxOrientation() { return BoxOrientation; }
-	FORCEINLINE const class UShapeComponent* GetSweepCollision() { return SweepCollision; }
+	//FORCEINLINE const class UShapeComponent* GetSweepCollision() { return SweepCollision; }
 	FORCEINLINE const int32& GetCheckedActorSpawnCount() { return CheckedActorSpawnCount; }
 
 public:
-	void FailCollide();
+	FORCEINLINE void FailCollide() { FailCount++; }
 
 private:
 	void SpawnAllTester();
@@ -65,15 +67,15 @@ private:
 // Attack Setting Section
 private:
 	UPROPERTY(EditAnywhere, Category = "AttackSetting")
-	float SweepDistance;
+	float OverlapDistance;
 
-	UPROPERTY(EditAnywhere, Category = "AttackSetting")
+	UPROPERTY(EditAnywhere, Category = "AttackSetting", meta = (ClampMin = "0.001"))
 	float WeaponLength;
 
-	UPROPERTY(EditAnywhere, Category = "AttackSetting")
+	//UPROPERTY(EditAnywhere, Category = "AttackSetting")
 	float AttackSpeed;
 
-	UPROPERTY(EditAnywhere, Category = "AttackSetting")
+	//UPROPERTY(EditAnywhere, Category = "AttackSetting")
 	int32 AttackRepeatCount;
 
 // Test Setting Section
@@ -81,10 +83,10 @@ private:
 	UPROPERTY(EditAnywhere, Category = "TestSetting")
 	TestMethod FirstMethod;
 
-	UPROPERTY(EditAnywhere, Category = "TestSetting")
+	//UPROPERTY(EditAnywhere, Category = "TestSetting")
 	TestMethod SecondMethod;
 
-	UPROPERTY(EditAnywhere, Category = "TestSetting")
+	//UPROPERTY(EditAnywhere, Category = "TestSetting")
 	float TestDelay;
 
 	UPROPERTY(EditAnywhere, Category = "TestSetting")
@@ -113,8 +115,8 @@ private:
 	UPROPERTY(EditAnywhere, Category = "BoxSetting")
 	FRotator BoxOrientation;
 
-	UPROPERTY(EditAnywhere, Category = "SweepSetting")
-	TObjectPtr<class UShapeComponent> SweepCollision;
+	//UPROPERTY(EditAnywhere, Category = "SweepSetting")
+	//TObjectPtr<class UShapeComponent> SweepCollision;
 
 // Manager Section
 private:

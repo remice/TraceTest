@@ -45,8 +45,10 @@ private:
 	void ExBoxTraceMulti();
 	void ExSphereTrace();
 	void ExSphereTraceMulti();
-	void ExSweepTrace();
-	void ExSweepTraceMulti();
+	void ExSphereOverlap();
+	void ExSphereOverlapComponents();
+	void ExBoxOverlap();
+	void ExCapsuleOverlap();
 
 private:
 	UPROPERTY()

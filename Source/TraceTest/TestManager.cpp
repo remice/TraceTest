@@ -13,7 +13,7 @@ ATestManager::ATestManager()
 	PrimaryActorTick.bCanEverTick = true;
 
 	// Attack setting default values
-	SweepDistance = 100.f;
+	OverlapDistance = 100.f;
 	WeaponLength = 400.f;
 	AttackSpeed = 1.f;
 	AttackRepeatCount = 1;
@@ -21,8 +21,8 @@ ATestManager::ATestManager()
 	// Test setting default values
 	TestDelay = 5.f;
 	PreDelay = 5.f;
-	TestActorSpawnCount = 100;
-	CheckedActorSpawnCount = 1;
+	TestActorSpawnCount = 1000;
+	CheckedActorSpawnCount = 5;
 	CheckedActorSpawnDistance = 10.f;
 
 	// Collision setting default values
@@ -44,6 +44,10 @@ void ATestManager::BeginPlay()
 
 	SpawnAllCollideManager();
 	SpawnAllTester();
+
+	//FTimerHandle TempTimerHandle;
+	//GetWorld()->GetTimerManager().SetTimer(TempTimerHandle, this, &ATestManager::CheckFailNumber, 0.1f, true, PreDelay);
+	//CheckFailNumber();
 }
 
 // Called every frame
@@ -58,14 +62,8 @@ void ATestManager::Tick(float DeltaTime)
 		FirstStart.Broadcast();
 		//PreDelay += 10000;
 
-		//FTimerHandle TempTimerHandle;
-		//GetWorld()->GetTimerManager().SetTimer(TempTimerHandle, this, &ATestManager::CheckFailNumber, 1, false, 0.5f);
+		CheckFailNumber();
 	}
-}
-
-void ATestManager::FailCollide()
-{
-	FailCount++;
 }
 
 void ATestManager::SpawnAllTester()
