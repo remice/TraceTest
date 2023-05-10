@@ -153,7 +153,7 @@ void ATester::ExLineTrace()
 		if (bDebugDraw)
 		{
 			IsCollide = UKismetSystemLibrary::LineTraceSingleForObjects(GetWorld(), TraceLocation, TraceLocation + (FVector(0, 1, 0) * Manager->GetWeaponLength()),
-				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForDuration, HitResult, true);
+				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForOneFrame, HitResult, true);
 		}
 		else
 		{
@@ -178,7 +178,7 @@ void ATester::ExLineTraceMulti()
 		if (bDebugDraw)
 		{
 			IsCollide = UKismetSystemLibrary::LineTraceMultiForObjects(GetWorld(), TraceLocation, TraceLocation + (FVector(0, 1, 0) * Manager->GetWeaponLength()),
-				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForDuration, HitResult, true);
+				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForOneFrame, HitResult, true);
 		}
 		else
 		{
@@ -210,7 +210,7 @@ void ATester::ExBoxTrace()
 		{
 			IsCollide = UKismetSystemLibrary::BoxTraceSingleForObjects(GetWorld(), TraceLocation, TraceLocation + (FVector(0, 1, 0) * Manager->GetWeaponLength()),
 				Manager->GetBoxHalfSize(), Manager->GetBoxOrientation(),
-				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForDuration, HitResult, true);
+				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForOneFrame, HitResult, true);
 		}
 		else
 		{
@@ -237,7 +237,7 @@ void ATester::ExBoxTraceMulti()
 		{
 			IsCollide = UKismetSystemLibrary::BoxTraceMultiForObjects(GetWorld(), TraceLocation, TraceLocation + (FVector(0, 1, 0) * Manager->GetWeaponLength()),
 				Manager->GetBoxHalfSize(), Manager->GetBoxOrientation(),
-				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForDuration, HitResult, true);
+				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForOneFrame, HitResult, true);
 		}
 		else
 		{
@@ -269,7 +269,7 @@ void ATester::ExSphereTrace()
 		{
 			IsCollide = UKismetSystemLibrary::SphereTraceSingleForObjects(GetWorld(), TraceLocation, TraceLocation + (FVector(0, 1, 0) * Manager->GetWeaponLength()),
 				Manager->GetSphereRadius(),
-				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForDuration, HitResult, true);
+				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForOneFrame, HitResult, true);
 		}
 		else
 		{
@@ -296,7 +296,7 @@ void ATester::ExSphereTraceMulti()
 		{
 			IsCollide = UKismetSystemLibrary::SphereTraceMultiForObjects(GetWorld(), TraceLocation, TraceLocation + (FVector(0, 1, 0) * Manager->GetWeaponLength()),
 				Manager->GetSphereRadius(),
-				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForDuration, HitResult, true);
+				Manager->GetObjectTypeArray(), true, Manager->GetIgnoreActorArray(), EDrawDebugTrace::ForOneFrame, HitResult, true);
 		}
 		else
 		{
